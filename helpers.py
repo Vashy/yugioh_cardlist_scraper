@@ -68,3 +68,7 @@ def outputCSV(filename, card_list, delimiter):
                 f"{listToStr(card.card_anti_supports)}{delimiter}{listToStr(card.card_actions)}{delimiter}"
                 f"{listToStr(card.effect_types)}{delimiter}\n")
     f.close()
+
+def read_packs():
+    with open('packs.txt', 'r') as f:
+        return [line.strip() for line in f.readlines() if line != '\n']

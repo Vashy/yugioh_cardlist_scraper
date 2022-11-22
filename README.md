@@ -9,6 +9,8 @@ This script was programmed using `Python 3.7`. The repository comes with a `requ
 pip install -r requirements.txt
 ```
 
+You can filter packs by populating the [packs.txt](packs.txt) file
+
 ## Running
 
 ![](./img/progress_bar.PNG)

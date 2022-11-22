@@ -28,6 +28,12 @@ count = 0
 pack_elements = soup.find_all("div", class_="pack pack_en")
 link_elements = soup.find_all("input", class_="link_value")
 pack_names = soup.find_all('div', class_="pack")
+filtered_packs = helpers.read_packs()
+
+print('Only the following packs will be processed:')
+print()
+print(*[f'\t{pack}' for pack in filtered_packs], sep='\n')
+print()
 
 with alive_bar(len(link_elements), dual_line=True, title='Packs Processed') as bar:
     for element in link_elements:   # Loop through Packs
@@ -43,6 +49,8 @@ with alive_bar(len(link_elements), dual_line=True, title='Packs Processed') as b
         count += 1  # Increase the count for next iteration
 
         pack_name = helpers.cleanStr(pack_name,  [("/", "-"), (":", "-")])
+        if pack_name not in filtered_packs:
+            continue
         if os.path.isfile(f"{output_path}/{pack_name}.csv"):
             bar()
             continue
